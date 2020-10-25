@@ -2,7 +2,7 @@ Team Mu
 Application: FinanceNow
 
 Team Overview
-The team consists of Eric Trimble @erictrimbs, Alfred Joseph @?, and Ariel Simnegar @ariel-simnegar.
+The team consists of Eric Trimble @erictrimbs, Alfred Joseph @josephalfred7, and Ariel Simnegar @ariel-simnegar.
 
 Innovative Idea
 FinanceNow is a web interface that gives users opinionated data about their spending with the goal of helping them make better financial decisions. It is roughly similar to Mint.com and other budgeting apps, the difference is that these existing apps are made for budgeting your spending rather than empowering you to save and invest your money by giving you detailed data about where your money from each paycheck is going and what your finances could look like given different investing strategies. It would implement Plaid to let users link their bank and financial accounts, then perform operations on the data in the backend to transform it into a form that we want to display to users. Lastly, we connect the data to html pages to come full-circle and let users access the data.
