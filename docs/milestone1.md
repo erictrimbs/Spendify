@@ -10,13 +10,13 @@
 
 The dashboard will show the results of Spendify's analytics on user data. These results will include observations, suggestions, visual displays (charts, graphs, etc), and much more!
 
-![Dashboard wireframe](../images/dashboard.png)
+![Dashboard wireframe](../images/dashboard-wireframe.png)
 
 ## Transaction History
 
 On this page, users will easily be able to view their transaction histories and understand how the application classifies their various transactions.
 
-![Transaction history wireframe](../images/history.png)
+![Transaction history wireframe](../images/history-wireframe.png)
 
 # Webpages
 
