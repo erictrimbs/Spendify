@@ -1,7 +1,13 @@
+
+html {
+    background-color:lightblue;
+}
+body{
+    background-color: lightblue;
+}
 .underlined {
     text-decoration: underline;
 }
-
 .login-block {
     position: absolute;
     left: 50%;
@@ -10,5 +16,4 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
-
 }
