@@ -22,7 +22,7 @@ On this page, users will easily be able to view their transaction histories and 
 
 On this page users will be able to log in to their account
 
-![Login wireframe](https://github.com/ETrimbs/cs326-final-mu/blob/master/wireframes/Main.pdf)
+![Login wireframe](../images/login-wireframe.png)
 
 
 # Webpages
@@ -34,6 +34,10 @@ On this page users will be able to log in to their account
 ## Transaction History
 
 ![Transaction history image](../images/history.png)
+
+## Login
+
+![Login image](../images/login.PNG)
 
 # Breakdown of Division of Labor
 
