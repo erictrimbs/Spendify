@@ -18,6 +18,13 @@ On this page, users will easily be able to view their transaction histories and 
 
 ![Transaction history wireframe](../images/history-wireframe.png)
 
+## Login
+
+On this page users will be able to log in to their account
+
+![Login wireframe](https://github.com/ETrimbs/cs326-final-mu/blob/master/wireframes/Main.pdf)
+
+
 # Webpages
 
 ## Dashboard
