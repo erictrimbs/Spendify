@@ -24,6 +24,13 @@ On this page users will be able to log in to their account
 
 ![Login wireframe](../images/login-wireframe.png)
 
+## Help Page
+
+On this page users will get an overview of what the site is for as well as links to registration and contact information
+
+![Login wireframe](../images/help-wireframe.png)
+
+
 
 # Webpages
 
