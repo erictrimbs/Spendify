@@ -56,6 +56,10 @@ On this page users will be able to register for this service by adding their nam
 
 ![Help image](../images/help.PNG)
 
+## Register Page
+
+![Register Image](../images/register.PNG)
+
 # Breakdown of Division of Labor
 
 ...
