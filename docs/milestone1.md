@@ -46,6 +46,10 @@ On this page users will get an overview of what the site is for as well as links
 
 ![Login image](../images/login.PNG)
 
+## Help Page
+
+![Login wireframe](../images/help.PNG)
+
 # Breakdown of Division of Labor
 
 ...
