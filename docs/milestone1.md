@@ -28,7 +28,13 @@ On this page users will be able to log in to their account
 
 On this page users will get an overview of what the site is for as well as links to registration and contact information
 
-![Login wireframe](../images/help-wireframe.png)
+![Help wireframe](../images/help-wireframe.png)
+
+## Register Page
+
+On this page users will be able to register for this service by adding their name and their bank account information
+
+![Register wireframe](../images/.png)
 
 
 
@@ -48,7 +54,7 @@ On this page users will get an overview of what the site is for as well as links
 
 ## Help Page
 
-![Login wireframe](../images/help.PNG)
+![Help image](../images/help.PNG)
 
 # Breakdown of Division of Labor
 
