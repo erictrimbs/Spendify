@@ -1,3 +1,6 @@
+## Data Interactions
+Users will input data manually and/or pull data from their accounts. The app will process and show data on certain html pages
+
 ## Dashboard
 
 The dashboard will show the results of Spendify's analytics on user data. These results will include observations, suggestions, visual displays (charts, graphs, etc), and much more!
@@ -65,3 +68,5 @@ On this page users will be able to register for this service by adding their nam
 # Breakdown of Division of Labor
 
 Eric Trimble - helped with this file, created the income wireframe, html, and images. Helped debug some html/css interactions including the background color and overriding bootstrap styles. Also, created ideas.md
+Alfred Joseph - helped create all the wireframes other than income. Created the html for login, register, and help. Added parts to milestone1.md
+Ariel Simnegar - helped create all the wireframes other than income. Created the html for the dashboard and for the transaction history.
