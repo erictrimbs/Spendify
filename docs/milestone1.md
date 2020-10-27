@@ -1,16 +1,14 @@
-# Data Interactions
-
-...
-
-# Wireframes
-
-...
-
 ## Dashboard
 
 The dashboard will show the results of Spendify's analytics on user data. These results will include observations, suggestions, visual displays (charts, graphs, etc), and much more!
 
 ![Dashboard wireframe](../images/dashboard-wireframe.png)
+
+## Income Analysis
+
+The income analysis page will show data about how much of a user's income they are keeping each month. The recommended minimum savings is 10% of earned income. It will display a recommendation based on the calculated savings.
+
+![Income analysis wireframe](../images/income-wireframe.png)
 
 ## Transaction History
 
@@ -44,6 +42,10 @@ On this page users will be able to register for this service by adding their nam
 
 ![Dashboard image](../images/dashboard.png)
 
+## Income Analysis
+
+![Income analysis image](../images/income.png)
+
 ## Transaction History
 
 ![Transaction history image](../images/history.png)
@@ -62,4 +64,4 @@ On this page users will be able to register for this service by adding their nam
 
 # Breakdown of Division of Labor
 
-...
+Eric Trimble - helped with this file, created the income wireframe, html, and images. Helped debug some html/css interactions including the background color and overriding bootstrap styles. Also, created ideas.md
