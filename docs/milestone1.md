@@ -34,7 +34,7 @@ On this page users will get an overview of what the site is for as well as links
 
 On this page users will be able to register for this service by adding their name and their bank account information
 
-![Register wireframe](../images/.png)
+![Register wireframe](../images/register-wireframe.png)
 
 
 
