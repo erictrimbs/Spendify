@@ -9,3 +9,6 @@ Spendify is a web interface that gives users opinionated data about their spendi
 
 Important Components
     Our app has some functional requirements. A user needs to log into their account. Next, they need to be able to link their financial data across bank and brokerage accounts. This is handled by linking to Plaid's API. Next, their financial data needs to be served back to them. Bonus points for creating innovative data to serve and for securely accessing and storing data.
+
+Data interaction:
+    Users will input data manually and/or pull data from their accounts. The app will process and show data on certain html pages
