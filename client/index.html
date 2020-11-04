@@ -4,20 +4,48 @@
         <title>CS326 Project</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="main.css">
+        <script type="module" src="login.js" defer></script>
     </head>
     <body>
         <div class="login-block">
-            <div class="card" style="width: 40rem;">
+            <div class="card" style="width: 30rem;">
               <div class="card-body">
-                <h5 class="card-title">Login</h5>
-                        <label for="username">Username   </label><input type="text" id="username" /><br>
-                        <label for="password">Password   </label><input type="text" id="password" /><br>
-                        <label for="remember">Rememeber Me   </label><input type="checkbox" id="remember" /><br>
-                        <input type="button" value="Login" id="login" />
-                        <input type="button" value="Register" id="register" />
+                <h3 class="card-title">Login</h3>
+                <form class="needs-validation" id="login-form" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3 md-form">
+                          <label for="username">Username</label>
+                          <input type="text" class="form-control" id="username" placeholder="Username" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a username.
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-3 md-form">
+                          <label for="password">Password</label>
+                          <input type="password" class="form-control" id="password" placeholder="Password"
+                            required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a password.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="custom-control custom-checkbox mb-3">
+                            <input type="checkbox" class="custom-control-input" id="remember">
+                            <label class="custom-control-label" for="remember">Remember me</label>
+                          </div>
+                      </div>
+                      <button class="btn btn-primary btn-rounded" type="button" id="login">Login</button>
+                      <button class="btn btn-primary btn-rounded" type="button" id="register">Register</button>
+                    </form>
               </div>
             </div>
         </div>
-        
     </body>
 </html>

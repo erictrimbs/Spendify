@@ -4,23 +4,123 @@
         <title>Register</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="main.css">
+        <script type="module" src="register.js" defer></script>
     </head>
     <body>
         <div class="login-block">
             <div class="card" style="width: 40rem;">
-              <div class="card-body">
-                <h5 class="card-title">Register</h5>
-                        <label for="name">Name   </label><input type="text" id="name" /><br>
-                        <label for="address">Address   </label><input type="text" id="address" /><br>
-              </div>
-            </div>
-            <div class="card" style="width: 40rem;">
                 <div class="card-body">
-                          <label for="accountnumber">Account Number   </label><input type="text" id="accountnumber" /><br>
-                          <label for="routingnumber">Routing Number   </label><input type="text" id="routingnumber" /><br>
-                          <label for="bankusername">Bank Username   </label><input type="text" id="bankusername" /><br>
-                          <label for="bankpassword">Bank Password   </label><input type="text" id="bankpassword" /><br>
-                          <input type="button" value="Register" id="register" />
+                    <h2 class="card-title">Register</h2>
+                    <form class="needs-validation" id="registration-form" novalidate>
+                      <div class="form-row">
+                        <div class="col-md-4 mb-3 md-form">
+                          <label for="realname">Name</label>
+                          <input type="text" class="form-control" id="realname" placeholder="First Last" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide your name.
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-3 md-form">
+                          <label for="username">Spendify Username</label>
+                          <input type="text" class="form-control" id="username" placeholder="Username" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a username.
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-3 md-form">
+                          <label for="password">Spendify Password</label>
+                          <input type="password" class="form-control" id="password" placeholder="Password"
+                            required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a password.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-5 mb-3 md-form">
+                          <label for="bank-username">Bank Username</label>
+                          <input type="text" class="form-control" id="bank-username" placeholder="Bank Username" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a username.
+                          </div>
+                        </div>
+                        <div class="col-md-7 mb-3 md-form">
+                          <label for="bank-password">Bank Password</label>
+                          <input type="password" class="form-control" id="bank-password" placeholder="Bank Password" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a password.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-5 mb-3 md-form">
+                          <label for="account-number">Account Number</label>
+                          <input type="number" class="form-control" id="account-number" placeholder="Account Number" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide an account number.
+                          </div>
+                        </div>
+                        <div class="col-md-7 mb-3 md-form">
+                          <label for="routing-number">Routing Number</label>
+                          <input type="number" class="form-control" id="routing-number" placeholder="Routing Number" required>
+                          <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a routing number.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-5 mb-3 md-form">
+                          <label for="address">Address</label>
+                          <input type="text" class="form-control" id="address" placeholder="Address" required>
+                          <div class="invalid-feedback">
+                            Please provide a valid address.
+                          </div>
+                        </div>
+                        <div class="col-md-3 mb-3 md-form">
+                          <label for="city">City</label>
+                          <input type="text" class="form-control" id="city" placeholder="City" required>
+                          <div class="invalid-feedback">
+                            Please provide a valid city.
+                          </div>
+                        </div>
+                        <div class="col-md-2 mb-3 md-form">
+                          <label for="state">State</label>
+                          <input type="text" class="form-control" id="state" placeholder="XX" minlength="2" maxlength="2" required>
+                          <div class="invalid-feedback">
+                            Please provide a valid state.
+                          </div>
+                        </div>
+                        <div class="col-md-2 mb-3 md-form">
+                          <label for="zip">Zip</label>
+                          <input type="number" class="form-control" id="zip" placeholder="XXXXX" minlength="5" maxlength="5" required>
+                          <div class="invalid-feedback">
+                            Please provide a valid zip.
+                          </div>
+                        </div>
+                      </div>
+                      <button class="btn btn-primary btn-sm btn-rounded" type="button" id="register">Register</button>
+                    </form>
                 </div>
             </div>
         </div>
