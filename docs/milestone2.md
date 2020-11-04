@@ -28,7 +28,7 @@ fetch('/registerUser', {
     body: JSON.stringify({
         realname: 'Emery Berger',
         username: 'eberger',
-        password: 'i_heart_326,
+        password: 'i_heart_326',
         bankUsername: 'eberger',
         bankPassword: 'givem3money',
         accountNumber: '0123456',
