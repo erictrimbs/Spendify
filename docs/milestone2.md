@@ -19,7 +19,7 @@ This command adds the given user's identifying information to the database:
 If an entry with the given username already exists, the command does not add the information and returns an error object.
 
 **Example**:
-```
+```javascript
 fetch('/registerUser', {
     method: 'POST',
     headers: {
@@ -46,7 +46,7 @@ fetch('/registerUser', {
 ```
 
 This command takes a username-password pair and returns the user's identifying information. If the username-password pair is not found in the database, the command returns an error object.
-```
+```javascript
 fetch('/loginUser', {
     method: 'POST',
     headers: {
