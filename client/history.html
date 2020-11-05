@@ -30,10 +30,10 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Date</th>
-                  <th scope="col">Amount</th>
-                  <th scope="col">Category</th>
-                  <th scope="col">Description</th>
+                  <th scope="col">Date |  <label for="datefilter">Filter on: &nbsp;   </label><input type="text" id="datefilter" /><br></th> 
+                  <th scope="col">Amount | <label for="amountfilter">Filter on: &nbsp;   </label><input type="text" id="amountfilter" /><br></th> 
+                  <th scope="col">Category | <label for="categoryfilter">Filter on: &nbsp;   </label><input type="text" id="categoryfilter" /><br> </th> 
+                  <th scope="col">Description | <label for="descriptionfilter">Filter on: &nbsp;   </label><input type="text" id="descriptionfilter" /><br></th> 
                 </tr>
               </thead>
               <tbody>
@@ -59,7 +59,7 @@
             </table>
         </div>
         <div id="back-wrapper" class="container">
-            <a class="btn btn-primary" href="dashboard.html">Back</a>
+            <a class="btn btn-primary" href="dashboard.html">Back</a> <a class="btn btn-primary" id = "filterbutton" href="dashboard.html">Filter</a>
         </div>
     </body>
 </html>
