@@ -71,6 +71,6 @@ fetch('/loginUser', {
 
 (Alfred)
 
-## Updating History API
+## CRUD Transaction History API
 
 (Eric)
