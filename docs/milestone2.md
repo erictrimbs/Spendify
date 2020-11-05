@@ -17,7 +17,7 @@ This command adds the given user's identifying information to the database:
  - Bank Password
  - Account Number
  - Routing Number
-If an entry with the given username already exists, the command does not add the information and returns an error object.
+If an entry with the given username already exists, the command does not add the information and returns an error object. Clicking the "Register" button in the below image calls the `/registerUser` API:
 
 ![Register user image](../images/registerUser.png)
 
@@ -49,7 +49,7 @@ fetch('/registerUser', {
 /loginUser
 ```
 
-This command takes a username-password pair and returns the user's identifying information. If the username-password pair is not found in the database, the command returns an error object.
+This command takes a username-password pair and returns the user's identifying information. If the username-password pair is not found in the database, the command returns an error object. Clicking the "Login" button in the below image calls the `/loginUser` API:
 
 ![Login user image](../images/loginUser.png)
 
