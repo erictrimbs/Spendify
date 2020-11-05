@@ -3,6 +3,7 @@
 
 ## Login API
 
+### Register User
 ```
 /registerUser
 ```
@@ -17,6 +18,8 @@ This command adds the given user's identifying information to the database:
  - Account Number
  - Routing Number
 If an entry with the given username already exists, the command does not add the information and returns an error object.
+
+![Register user image](../images/registerUser.png)
 
 **Example**:
 ```javascript
@@ -41,11 +44,15 @@ fetch('/registerUser', {
 });
 ```
 
+### Login User
 ```
 /loginUser
 ```
 
 This command takes a username-password pair and returns the user's identifying information. If the username-password pair is not found in the database, the command returns an error object.
+
+![Login user image](../images/loginUser.png)
+
 ```javascript
 fetch('/loginUser', {
     method: 'POST',
