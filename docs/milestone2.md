@@ -17,6 +17,7 @@ This command adds the given user's identifying information to the database:
  - Bank Password
  - Account Number
  - Routing Number
+
 If an entry with the given username already exists, the command does not add the information and returns an error object. Clicking the "Register" button in the below image calls the `/registerUser` API:
 
 ![Register user image](../images/registerUser.png)
