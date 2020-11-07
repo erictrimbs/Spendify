@@ -25,6 +25,17 @@ document.getElementById('addbutton').addEventListener('click', () => {
                 });
             }
             addentrysync();
+
+            async function entriesSync() {
+                let t1 = await fetch('/historyEntries');
+                if (!t1.ok) {
+                    console.log(response.error);
+                    return;
+                }
+                let fp1 = await t1.json();
+                render_history_table(document.getElementById("historytable"), fp1);
+            }
+            entriesSync();
 });
 
 function render_history_table(element, arr) {
