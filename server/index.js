@@ -9,6 +9,7 @@ if (existsSync("database.json")) {
 } else {
     database = {
         users: [],
+        history: []
 
         /* other fields to be determined */
     };
@@ -118,6 +119,30 @@ createServer(async (req, res) => {
                 }));
             }
         });
+    } 
+    else if (parsed.pathname === '/addEntry') {
+        let body = '';
+        req.on('data', data => body += data);
+        req.on('end', () => {
+            const data = JSON.parse(body);
+            database.history.push({
+                date: data.date,
+                amount: data.amount,
+                category: data.category,
+                description: data.description
+            });
+            
+            writeFile("database.json", JSON.stringify(database), err => {
+                if (err) {
+                    console.err(err);
+                } else res.end();
+            });
+        });
+    } 
+    else if (parsed.pathname === '/historyEntries') {
+        res.end(JSON.stringify(
+            database.history
+        ));
     } else if (parsed.pathname === '/someGetRequest') {
         res.end(JSON.stringify(database.doSomething()));
     } else {

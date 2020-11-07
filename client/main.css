@@ -8,6 +8,14 @@ body{
 .underlined {
     text-decoration: underline;
 }
+
+#historytable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 .login-block {
     position: absolute;
     left: 50%;

@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Transaction History</title>
+        <script type="module" src="history.js" defer></script>
         <link rel="stylesheet" href="main.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="main.css">
@@ -26,14 +27,15 @@
         <div id="heading-wrapper" class="container">
             <h3 class="display-5">Spendify Transaction History</h3>
         </div>
+        <div id = "historytable">
         <div id="history-wrapper" class="container">
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Date |  <label for="datefilter">Filter on: &nbsp;   </label><input type="text" id="datefilter" /><br></th> 
-                  <th scope="col">Amount | <label for="amountfilter">Filter on: &nbsp;   </label><input type="text" id="amountfilter" /><br></th> 
-                  <th scope="col">Category | <label for="categoryfilter">Filter on: &nbsp;   </label><input type="text" id="categoryfilter" /><br> </th> 
-                  <th scope="col">Description | <label for="descriptionfilter">Filter on: &nbsp;   </label><input type="text" id="descriptionfilter" /><br></th> 
+                  <th scope="col">Date </th> 
+                  <th scope="col">Amount </th> 
+                  <th scope="col">Category </th> 
+                  <th scope="col">Description </th> 
                 </tr>
               </thead>
               <tbody>
@@ -58,8 +60,19 @@
               </tbody>
             </table>
         </div>
+      </div><br>
         <div id="back-wrapper" class="container">
-            <a class="btn btn-primary" href="dashboard.html">Back</a> <a class="btn btn-primary" id = "filterbutton" href="dashboard.html">Filter</a>
+          <label for="dateadd">Add: Date &nbsp;   </label><input type="text" id="dateadd" />
+          <label for="amountadd"> Amount &nbsp;   </label><input type="text" id="amountadd" />
+          <label for="categoryadd"> Category &nbsp;   </label><input type="text" id="categoryadd" />
+          <label for="descriptionadd"> Description &nbsp;   </label><input type="text" id="descriptionadd" />
+          <a class="btn btn-primary" id = "addbutton">Add</a><br>
+          <label for="datefilter">Filter on:     Date &nbsp;   </label><input type="text" id="datefilter" />
+          <label for="amountfilter"> Amount &nbsp;   </label><input type="text" id="amountfilter" />
+          <label for="categoryfilter"> Category &nbsp;   </label><input type="text" id="categoryfilter" />
+          <label for="descriptionfilter"> Description &nbsp;   </label><input type="text" id="descriptionfilter" />
+          <a class="btn btn-primary" id = "filterbutton">Filter</a><br><br>
+          <a class="btn btn-primary" href="dashboard.html">Back</a> 
         </div>
     </body>
 </html>
