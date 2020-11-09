@@ -107,12 +107,12 @@ This command displays the current items in the database in a table on the transa
 
 **Example**:
 ```javascript
-await fetch('/historyEntries');
+ let t1 = await fetch('/historyEntries');
  if (!t1.ok) {
   console.log(response.error);
   return;
  }
-  let fp1 = await t1.json();
-  render_history_table(document.getElementById("historytable"), fp1);
+ let fp1 = await t1.json();
+ render_history_table(document.getElementById("historytable"), fp1);
 ```
 
