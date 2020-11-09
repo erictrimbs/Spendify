@@ -81,7 +81,7 @@ fetch('/loginUser', {
 /addEntry
 ```
 
-This command adds an entry to the transaction history page that is entered into the appropriate fields on the page and then the add button is clicked.
+This command adds an entry to the transaction history page when information is entered into the appropriate fields on the page and then the add button is clicked.
 
 ![New history image](../images/historynew.png)
 
