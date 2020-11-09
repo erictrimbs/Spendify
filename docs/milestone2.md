@@ -69,8 +69,8 @@ fetch('/loginUser', {
 
 ## Filtering History API
 
-(Alfred)
+(Eric)
 
 ## CRUD API for Transaction History Entries
 
-(Eric)
+(Alfred)
