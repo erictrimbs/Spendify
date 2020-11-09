@@ -83,16 +83,36 @@ fetch('/loginUser', {
 
 This command adds an entry to the transaction history page that is entered into the appropriate fields on the page and then the add button is clicked.
 
-![New history image](../images/histornynew.png)
+![New history image](../images/historynew.png)
 
 **Example**:
 ```javascript
 await fetch("/addEntry", {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({date:"10/25/20", amount: "22", category: "recreation", description: "Boda Borg"})
-                });
+ method: 'POST',
+ headers: {
+  "Content-Type": "application/json"
+  },
+  body: JSON.stringify({date:"10/25/20", amount: "22", category: "recreation", description: "Boda Borg"})
+ });
+```
+
+### Display Transaction history
+```
+/historyEntries
+```
+
+This command displays the current items in the database for transaction history. 
+
+![New history image](../images/historynew.png)
+
+**Example**:
+```javascript
+await fetch('/historyEntries');
+ if (!t1.ok) {
+  console.log(response.error);
+  return;
+ }
+  let fp1 = await t1.json();
+  render_history_table(document.getElementById("historytable"), fp1);
 ```
 
