@@ -13,11 +13,18 @@ if (existsSync("database.json")) {
 
         /* other fields to be determined */
     };
+    writeFile("database.json", JSON.stringify(database), (err) => {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log('Database initiated and saved!');
+        }
+    });
 }
 
 createServer(async (req, res) => {
     const parsed = parse(req.url, true);
-
+    
     /**
      * POST Request: registerUser
      *
@@ -140,10 +147,33 @@ createServer(async (req, res) => {
         });
     } 
     else if (parsed.pathname === '/historyEntries') {
+        const options = parsed.query;
+        let out = [];
+        console.log("hit history entries")
+
+        if("date" in options){
+            for(let item of database.history){
+                if(new Date(item.date) >= new Date(options.date)){
+                    out.push(item);
+                }
+            }
+        }
+        else if("category" in options){
+            for(let item of database.history){
+                if(item.category.includes(options.category)){
+                    out.push(item);
+                }
+            }
+        }
+        else{
+            out = database.history;
+        }
+        res.writeHead(200, {"Content-Type" : "text/html"});
         res.end(JSON.stringify(
-            database.history
+            out
         ));
     } else if (parsed.pathname === '/someGetRequest') {
+        
         res.end(JSON.stringify(database.doSomething()));
     } else {
         // If the client did not request an API endpoint, we assume we need to fetch a file.
