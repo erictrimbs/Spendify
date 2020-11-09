@@ -76,4 +76,23 @@ fetch('/loginUser', {
 
 ## CRUD API for Transaction History Entries
 
-(Alfred)
+### Add Entry to transaction history
+```
+/addEntry
+```
+
+This command adds an entry to the transaction history page that is entered into the appropriate fields on the page and then the add button is clicked.
+
+![New history image](../images/histornynew.png)
+
+**Example**:
+```javascript
+await fetch("/addEntry", {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({date:"10/25/20", amount: "22", category: "recreation", description: "Boda Borg"})
+                });
+```
+
