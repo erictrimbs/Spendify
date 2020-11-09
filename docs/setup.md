@@ -4,7 +4,9 @@ To setup Spendify, clone this repository.
 
 Enter the repository directory and run the following commands:
 
-```npm install
-node server/index.js```
+```
+npm install
+node server/index.js
+```
 
 The Spendify website will then be hosted on `localhost:8080`.
