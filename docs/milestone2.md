@@ -101,7 +101,7 @@ await fetch("/addEntry", {
 /historyEntries
 ```
 
-This command displays the current items in the database for transaction history. 
+This command displays the current items in the database in a table on the transaction history page. 
 
 ![New history image](../images/historynew.png)
 
