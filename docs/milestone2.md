@@ -70,11 +70,7 @@ fetch('/loginUser', {
 });
 ```
 
-## Filtering History API
-
-(Eric)
-
-## CRUD API for Transaction History Entries
+## API for Transaction History Entries
 
 ### Add Entry to transaction history
 ```
@@ -96,23 +92,41 @@ await fetch("/addEntry", {
  });
 ```
 
-### Display Transaction history
+### Display and Filter Transaction history
 ```
 /historyEntries
 ```
 
-This command displays the current items in the database in a table on the transaction history page. 
+This command takes filters for dates, amounts, categories, and descriptions and returns the subset of the transaction history that matches the given filters (or the entire history if no filters were requested).
 
 ![New history image](../images/historynew.png)
 
 **Example**:
 ```javascript
- let t1 = await fetch('/historyEntries');
- if (!t1.ok) {
-  console.log(response.error);
-  return;
- }
- let fp1 = await t1.json();
- render_history_table(document.getElementById("historytable"), fp1);
+fetch('/historyEntries', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify({date: '2020-05-10', category: 'Recreation'})
+});
 ```
 
+# Breakdown of Division of Labor:
+Ariel:
+ - Have `server/index.js` run HTTP server
+ - Create login and registration API and integrate with frontend
+ - Add data validation for frontend login and registration
+ - Rewrite backend for transaction history filtering API and integrate with frontend
+ - Create `setup.md`
+ - Take screenshots and write entries for login and registration API in `milestone2.md`
+ - Write entry for filtering API in `milestone2.md`
+ - Deploy app to Heroku
+
+Alfred:
+ - Create API to display transaction history and add additional entries
+ - Integrate API with frontend
+ - Take screenshots and write entries for transaction history API in `milestone2.md`
+
+Eric:
+ - Write history filtering code in server/index.js
