@@ -154,7 +154,7 @@ createServer(async (req, res) => {
 
             const history = database.history.filter((item) => {
                 for (const key of Object.keys(options)) {
-                    if (key in item && !item[key].includes(options[key])) {
+                    if (key in item && !String(item[key]).includes(String(options[key]))) {
                         return false;
                     }
                 }
