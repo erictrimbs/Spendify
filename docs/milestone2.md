@@ -121,6 +121,7 @@ Ariel:
  - Create `setup.md`
  - Take screenshots and write entries for login and registration API in `milestone2.md`
  - Write entry for filtering API in `milestone2.md`
+ - Write breakdown of division of labor
  - Deploy app to Heroku
 
 Alfred:
@@ -129,4 +130,4 @@ Alfred:
  - Take screenshots and write entries for transaction history API in `milestone2.md`
 
 Eric:
- - Write history filtering code in server/index.js
+ - Write history filtering code in `server/index.js`
