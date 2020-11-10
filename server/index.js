@@ -147,31 +147,23 @@ createServer(async (req, res) => {
         });
     } 
     else if (parsed.pathname === '/historyEntries') {
-        const options = parsed.query;
-        let out = [];
-        console.log("hit history entries")
+        let body = '';
+        req.on('data', data => body += data);
+        req.on('end', () => {
+            const options = JSON.parse(body);
 
-        if("date" in options){
-            for(let item of database.history){
-                if(new Date(item.date) >= new Date(options.date)){
-                    out.push(item);
+            const history = database.history.filter((item) => {
+                for (const key of Object.keys(options)) {
+                    if (key in item && !item[key].includes(options[key])) {
+                        return false;
+                    }
                 }
-            }
-        }
-        else if("category" in options){
-            for(let item of database.history){
-                if(item.category.includes(options.category)){
-                    out.push(item);
-                }
-            }
-        }
-        else{
-            out = database.history;
-        }
-        res.writeHead(200, {"Content-Type" : "text/html"});
-        res.end(JSON.stringify(
-            out
-        ));
+                return true;
+            });
+
+            res.end(JSON.stringify(history));
+        });
+
     } else if (parsed.pathname === '/someGetRequest') {
         
         res.end(JSON.stringify(database.doSomething()));

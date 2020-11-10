@@ -1,5 +1,14 @@
-async function entriesSync() {
-    let t1 = await fetch('/historyEntries');
+async function entriesSync(options) {
+    if (options === undefined) {
+      options = {};
+    }
+    let t1 = await fetch('/historyEntries', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(options)
+    });
     if (!t1.ok) {
         console.log(response.error);
         return;
@@ -25,17 +34,20 @@ document.getElementById('addbutton').addEventListener('click', () => {
                 });
             }
             addentrysync();
+            entriesSync({});
+});
 
-            async function entriesSync() {
-                let t1 = await fetch('/historyEntries');
-                if (!t1.ok) {
-                    console.log(response.error);
-                    return;
-                }
-                let fp1 = await t1.json();
-                render_history_table(document.getElementById("historytable"), fp1);
-            }
-            entriesSync();
+document.getElementById('filterbutton').addEventListener('click', () => {
+  const options = {};
+  const filterValues = ['date', 'amount', 'category', 'description'];
+  for (const filterValue of filterValues) {
+    const value = document.getElementById(`${filterValue}filter`).value;
+    if (value !== '') {
+      options[filterValue] = value;
+    }
+  }
+  entriesSync(options);
+
 });
 
 function render_history_table(element, arr) {
