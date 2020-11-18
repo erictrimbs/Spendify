@@ -15,8 +15,14 @@ const pgp = _pgp["default"] ({
     }
 });
 
-const username = "postgres";
-const password = "admin";
+let secrets, username, password;
+if (!process.env.PASSWORD) {
+    secrets = JSON.parse(readFileSync('secrets.json'));
+    password = secrets.password;
+} else {
+    password = process.env.PASSWORD;
+}
+username = process.env.NAME || secrets.username;
 
 const url = process.env.DATABASE_URL || `postgres://${username}:${password}@localhost/`;
 const db = pgp(url);
