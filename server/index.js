@@ -3,28 +3,58 @@ import {parse} from 'url';
 import {join} from 'path';
 import {writeFile, readFileSync, existsSync} from 'fs';
 
-let database;
-if (existsSync("database.json")) {
-    database = JSON.parse(readFileSync("database.json"));
-} else {
-    database = {
+import * as _pgp from "pg-promise";
+import { timeStamp } from 'console';
+const pgp = _pgp["default"] ({
+    connect(client) {
+        console.log('Connected to database:', client.connectionParameters.database);
+    },
+
+    disconnect(client) {
+        console.log('Disconnected from database:', client.connectionParameters.database);
+    }
+});
+
+const username = "postgres";
+const password = "admin";
+
+const url = process.env.DATABASE_URL || `postgres://${username}:${password}@localhost/`;
+const db = pgp(url);
+
+async function connectAndRun(task) {
+    let connection = null;
+
+    try {
+        connection = await db.connect();
+        return await task(connection);
+    } catch (e) {
+        throw e;
+    } finally {
+        try {
+            connection.done();
+        } catch(ignored) {
+
+        }
+    }
+}
+
+let createTableUsers = "CREATE TABLE IF NOT EXISTS users (username VARCHAR , password VARCHAR , realname VARCHAR, address VARCHAR, accountNumber INT, routingNumber INT, bankUsername VARCHAR, bankPassword VARCHAR);";
+let createTableHistory = "CREATE TABLE IF NOT EXISTS history (date VARCHAR , amount INT, category VARCHAR, description VARCHAR);";
+let userTable = "SELECT * FROM users;";
+let historyTable = "SELECT * FROM history;";
+
+createServer(async (req, res) => {
+    const parsed = parse(req.url, true);
+    await connectAndRun(db => db.none(createTableUsers));
+    await connectAndRun(db => db.none(createTableHistory));
+    let database = {
         users: [],
         history: []
 
         /* other fields to be determined */
     };
-    writeFile("database.json", JSON.stringify(database), (err) => {
-        if (err) {
-            console.error(err);
-        } else {
-            console.log('Database initiated and saved!');
-        }
-    });
-}
-
-createServer(async (req, res) => {
-    const parsed = parse(req.url, true);
-    
+    database.users = await connectAndRun(db => db.any(userTable));
+    database.history = await connectAndRun(db => db.any(historyTable));
     /**
      * POST Request: registerUser
      *
@@ -61,28 +91,8 @@ createServer(async (req, res) => {
             if (!usernameInDatabase) {
                 // Add user to database
                 console.log(`Adding user ${userToRegister.username} to database...`);
-                database.users.push({
-                    username: userToRegister.username,
-                    password: userToRegister.password,
-                    realname: userToRegister.realname,
-                    address:  userToRegister.address,
-                    accountNumber: userToRegister.accountNumber,
-                    routingNumber: userToRegister.routingNumber,
-                    bankUsername:  userToRegister.bankUsername,
-                    bankPassword:  userToRegister.bankPassword
-                });
-                
-                writeFile("database.json", JSON.stringify(database), (err) => {
-                    if (err) {
-                        console.error(err);
-                    } else {
-                        console.log('Database saved!');
-                        res.end(JSON.stringify({
-                            error: false,
-                            message: `User ${userToRegister.username} is registered!`
-                        }));
-                    }
-                });
+                connectAndRun(db => db.none("INSERT INTO users (username, password, realname, address, accountNumber, routingNumber, bankUsername, bankPassword) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", 
+                [userToRegister.username, userToRegister.password, userToRegister.realname, userToRegister.address, userToRegister.accountNumber, userToRegister.routingNumber, userToRegister.bankUsername, userToRegister.bankPassword]));
             }
         });
     /**
@@ -132,18 +142,7 @@ createServer(async (req, res) => {
         req.on('data', data => body += data);
         req.on('end', () => {
             const data = JSON.parse(body);
-            database.history.push({
-                date: data.date,
-                amount: data.amount,
-                category: data.category,
-                description: data.description
-            });
-            
-            writeFile("database.json", JSON.stringify(database), err => {
-                if (err) {
-                    console.err(err);
-                } else res.end();
-            });
+            connectAndRun(db => db.none("INSERT INTO history (date, amount, category, description) VALUES ($1, $2, $3, $4);", [data.date, data.amount, data.category, data.description]));
         });
     } 
     else if (parsed.pathname === '/historyEntries') {
@@ -163,9 +162,7 @@ createServer(async (req, res) => {
 
             res.end(JSON.stringify(history));
         });
-
     } else if (parsed.pathname === '/someGetRequest') {
-        
         res.end(JSON.stringify(database.doSomething()));
     } else {
         // If the client did not request an API endpoint, we assume we need to fetch a file.
@@ -192,4 +189,4 @@ createServer(async (req, res) => {
             res.end();
         }
     }
-}).listen(process.env.PORT || 8080);
+}).listen(process.env.PORT || 8081);
