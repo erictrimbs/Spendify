@@ -222,7 +222,7 @@ window.addEventListener('load', async () => {
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify({}) // Fetch full history (include no filters)
+        body: JSON.stringify({'username': window.localStorage.getItem('spendify_username')}) // Fetch full history (include no filters)
     });
     const history = await response.json();
     if (history.length > 0) {
