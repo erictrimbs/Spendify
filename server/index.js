@@ -44,8 +44,8 @@ async function connectAndRun(task) {
     }
 }
 
-let createTableUsers = "CREATE TABLE IF NOT EXISTS users (username VARCHAR PRIMARY KEY, password VARCHAR , realname VARCHAR, address VARCHAR, accountNumber INT, routingNumber INT, bankUsername VARCHAR, bankPassword VARCHAR);";
-let createTableHistory = "CREATE TABLE IF NOT EXISTS history (username VARCHAR REFERENCES users, date VARCHAR , amount INT, category VARCHAR, description VARCHAR);";
+let createTableUsers = "CREATE TABLE IF NOT EXISTS users (username VARCHAR, password VARCHAR , realname VARCHAR, address VARCHAR, accountNumber INT, routingNumber INT, bankUsername VARCHAR, bankPassword VARCHAR);";
+let createTableHistory = "CREATE TABLE IF NOT EXISTS history (username VARCHAR, date VARCHAR , amount INT, category VARCHAR, description VARCHAR);";
 let userTable = "SELECT * FROM users;";
 let historyTable = "SELECT * FROM history;";
 

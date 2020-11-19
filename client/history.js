@@ -20,7 +20,7 @@ entriesSync();
 
 document.getElementById('addbutton').addEventListener('click', () => {
             let obj = {};
-            obj.username = window.localStorage.getItem('spendify_username')
+            obj.username = window.localStorage.getItem('spendify_username');
             obj.date = document.getElementById("dateadd").value;
             obj.amount = document.getElementById("amountadd").value;
             obj.category = document.getElementById("categoryadd").value;
