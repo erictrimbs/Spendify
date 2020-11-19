@@ -171,6 +171,7 @@ function updateSuggestions(history) {
     }
     const months = {};
     while (new Date(dateToYM(earliestDate) + '-00') <= new Date()) {
+        console.log(dateToYM(earliestDate));
         months[dateToYM(earliestDate)] = 0;
         earliestDate.setMonth(earliestDate.getMonth() + 1);
     }
@@ -185,6 +186,7 @@ function updateSuggestions(history) {
     if (averageMonthlySpending === 0) {
         averageMonthlySpending = 1;
     }
+    console.log(dateToYM(new Date()));
     const currentMonthlySpending = months[dateToYM(new Date())];
     monthlySpendingEl.textContent = `$${currentMonthlySpending} was spent this month, ${Math.round(100 * currentMonthlySpending / averageMonthlySpending)}% of your average. `;
     if (currentMonthlySpending < averageMonthlySpending) {
