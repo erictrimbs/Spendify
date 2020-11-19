@@ -168,14 +168,17 @@ createServer(async (req, res) => {
             const options = JSON.parse(body);
 
             const history = database.history.filter((item) => {
-                if (data.username === item.username){
+                console.log('data.username in index.js: ' + options.username)
+                console.log('item.username in index.js: ' + item.username)
+                if(options.username === item.username){
                     for (const key of Object.keys(options)) {
                         if (key in item && !String(item[key]).includes(String(options[key]))) {
                             return false;
                         }
                     }
                     return true;
-                } else {
+                } 
+                else {
                     return false;
                 }
             });
