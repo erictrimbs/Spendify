@@ -133,7 +133,7 @@ function updateSpendingGraph(history) {
     }
     const monthEntries = Object.entries(months);
     monthEntries.sort(([ym1, a1], [ym2, a2]) => ym1 < ym2);
-    const greatestAmount = monthEntries.reduce((acc, elt) => Math.max(acc, elt[1]), 0);
+    let greatestAmount = monthEntries.reduce((acc, elt) => Math.max(acc, elt[1]), 0);
     // Set background color
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -143,7 +143,10 @@ function updateSpendingGraph(history) {
     const monthDiff = monthEntries.length * canvasWidth * (1 - margin * 2);
     let x = canvasWidth * margin;
     for (let i = 0; i < monthEntries.length; i++) {
-        const barHeight = monthEntries[i][1] / greatestAmount * canvasHeight * 0.6;
+        let barHeight = monthEntries[i][1] / greatestAmount * canvasHeight * 0.6;
+        if (barHeight !== barHeight) {
+            barHeight = 0;
+        }
         ctx.fillStyle = barColor;
         ctx.fillRect(x - 10, canvasHeight * 0.8 - barHeight, 20, barHeight);
         ctx.fillStyle = textColor;
@@ -167,7 +170,7 @@ function updateSuggestions(history) {
         }
     }
     const months = {};
-    while (dateToYM(earliestDate) <= dateToYM(new Date())) {
+    while (new Date(dateToYM(earliestDate) + '-00') <= new Date()) {
         months[dateToYM(earliestDate)] = 0;
         earliestDate.setMonth(earliestDate.getMonth() + 1);
     }
@@ -178,7 +181,10 @@ function updateSuggestions(history) {
         }
     }
     const monthValues = Object.values(months);
-    const averageMonthlySpending = monthValues.reduce((acc, elt) => acc + elt) / monthValues.length;
+    let averageMonthlySpending = monthValues.reduce((acc, elt) => acc + elt) / monthValues.length;
+    if (averageMonthlySpending === 0) {
+        averageMonthlySpending = 1;
+    }
     const currentMonthlySpending = months[dateToYM(new Date())];
     monthlySpendingEl.textContent = `$${currentMonthlySpending} was spent this month, ${Math.round(100 * currentMonthlySpending / averageMonthlySpending)}% of your average. `;
     if (currentMonthlySpending < averageMonthlySpending) {
@@ -216,7 +222,9 @@ window.addEventListener('load', async () => {
         body: JSON.stringify({}) // Fetch full history (include no filters)
     });
     const history = await response.json();
-    updateDonutChart(history);
-    updateSpendingGraph(history);
-    updateSuggestions(history);
+    if (history.length > 0) {
+        updateDonutChart(history);
+        updateSpendingGraph(history);
+        updateSuggestions(history);
+    }
 });

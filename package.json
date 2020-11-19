@@ -39,6 +39,6 @@
         }
     },
     "dependencies": {
-        "pg-promise": "^10.7.5"
+        "pg-promise": "^10.8.0"
     }
 }
