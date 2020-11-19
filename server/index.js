@@ -44,8 +44,8 @@ async function connectAndRun(task) {
     }
 }
 
-let createTableUsers = "CREATE TABLE IF NOT EXISTS users (username VARCHAR , password VARCHAR , realname VARCHAR, address VARCHAR, accountNumber INT, routingNumber INT, bankUsername VARCHAR, bankPassword VARCHAR);";
-let createTableHistory = "CREATE TABLE IF NOT EXISTS history (date VARCHAR , amount INT, category VARCHAR, description VARCHAR);";
+let createTableUsers = "CREATE TABLE IF NOT EXISTS users (username VARCHAR PRIMARY KEY, password VARCHAR , realname VARCHAR, address VARCHAR, accountNumber INT, routingNumber INT, bankUsername VARCHAR, bankPassword VARCHAR);";
+let createTableHistory = "CREATE TABLE IF NOT EXISTS history (username VARCHAR REFERENCES users, date VARCHAR , amount INT, category VARCHAR, description VARCHAR);";
 let userTable = "SELECT * FROM users;";
 let historyTable = "SELECT * FROM history;";
 
@@ -146,9 +146,19 @@ createServer(async (req, res) => {
     else if (parsed.pathname === '/addEntry') {
         let body = '';
         req.on('data', data => body += data);
+
+        if(data.username === null || data.date === null || data.amount === null){
+            const message = `User not specified for add entry`;
+                console.error(message);
+                res.end(JSON.stringify({
+                    error: true,
+                    message: message
+                }));
+        }
+
         req.on('end', () => {
             const data = JSON.parse(body);
-            connectAndRun(db => db.none("INSERT INTO history (date, amount, category, description) VALUES ($1, $2, $3, $4);", [data.date, data.amount, data.category, data.description]));
+            connectAndRun(db => db.none("INSERT INTO history (username, date, amount, category, description) VALUES ($1, $2, $3, $4, $5);", [data.username, data.date, data.amount, data.category, data.description]));
         });
     } 
     else if (parsed.pathname === '/historyEntries') {
@@ -158,12 +168,14 @@ createServer(async (req, res) => {
             const options = JSON.parse(body);
 
             const history = database.history.filter((item) => {
-                for (const key of Object.keys(options)) {
-                    if (key in item && !String(item[key]).includes(String(options[key]))) {
-                        return false;
+                if (data.username === item.username){
+                    for (const key of Object.keys(options)) {
+                        if (key in item && !String(item[key]).includes(String(options[key]))) {
+                            return false;
+                        }
                     }
+                    return true;
                 }
-                return true;
             });
 
             res.end(JSON.stringify(history));

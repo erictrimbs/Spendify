@@ -42,7 +42,6 @@ window.addEventListener('load', async () => {
             storage.setItem(USERNAME_STORAGE_KEY, usernameEl.value);
             storage.setItem(PASSWORD_STORAGE_KEY, passwordEl.value);
         } else {
-            storage.removeItem(USERNAME_STORAGE_KEY);
             storage.removeItem(PASSWORD_STORAGE_KEY);
         }
     }
