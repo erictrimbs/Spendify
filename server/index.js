@@ -175,6 +175,8 @@ createServer(async (req, res) => {
                         }
                     }
                     return true;
+                } else {
+                    return false;
                 }
             });
 
