@@ -1,4 +1,4 @@
-To setup Spendify, clone this repository.
+To setup Spendify, install Postgres and clone this repository.
 
 ```git clone https://github.com/ETrimbs/cs326-final-mu```
 
