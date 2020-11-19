@@ -127,8 +127,9 @@ function updateSpendingGraph(history) {
     }
     for (const entry of history) {
         const amount = +entry.amount;
-        if (amount === amount) { // Don't add malformed (NaN) amounts
-            months[dateToYM(new Date(entry.date))] += amount;
+        const key = dateToYM(new Date(entry.date));
+        if (amount === amount && key in months) { // Don't add malformed (NaN) amounts
+            months[key] += amount;
         }
     }
     const monthEntries = Object.entries(months);
