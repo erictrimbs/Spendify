@@ -170,7 +170,7 @@ function updateSuggestions(history) {
         }
     }
     const months = {};
-    while (new Date(dateToYM(earliestDate) + '-00') <= new Date()) {
+    while (new Date(dateToYM(earliestDate) + '-01').getTime() <= Date.now()) {
         console.log(dateToYM(earliestDate));
         months[dateToYM(earliestDate)] = 0;
         earliestDate.setMonth(earliestDate.getMonth() + 1);
