@@ -29,10 +29,12 @@ window.addEventListener('load', async () => {
         passwordEl.value = savedPassword;
     }
 
-        console.log(registrationFormEl.checkValidity());
     document.getElementById('register').addEventListener('click', async () => {
         registrationFormEl.classList.add('was-validated');
-        if (registrationFormEl.checkValidity()) {
+        const isValid = registrationFormEl.checkValidity();
+        console.log(`Registration form validity: ${isValid}`);
+        if (isValid) {
+            console.log('Sending request...');
             const response = await fetch('/registerUser', {
                 method: 'POST',
                 headers: {
@@ -53,13 +55,11 @@ window.addEventListener('load', async () => {
                 })
             });
             const feedback = await response.json();
+            console.log(`Received response ${JSON.stringify(feedback)}`);
             if (feedback.error) {
                 alert(feedback.message);
             } else {
-                console.log(feedback);
-                window.location.href = window.location.href.substring(
-                    0, window.location.href.lastIndexOf('/')
-                ) + '/dashboard.html';
+                window.location.href = 'dashboard.html';
             }
         }
     });
