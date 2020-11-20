@@ -18,24 +18,23 @@ async function entriesSync(options) {
 }
 entriesSync();
 
-document.getElementById('addbutton').addEventListener('click', () => {
+document.getElementById('addbutton').addEventListener('click', async () => {
             let obj = {};
             obj.username = window.localStorage.getItem('spendify_username');
             obj.date = document.getElementById("dateadd").value;
             obj.amount = document.getElementById("amountadd").value;
             obj.category = document.getElementById("categoryadd").value;
             obj.description = document.getElementById("descriptionadd").value;
-            async function addentrysync() {
-                await fetch("/addEntry", {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(obj)
-                });
-            }
-            addentrysync();
-            entriesSync({});
+           
+            await fetch("/addEntry", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(obj)
+            });
+            
+            await entriesSync({'username': window.localStorage.getItem('spendify_username')});
 });
 
 document.getElementById('filterbutton').addEventListener('click', () => {
