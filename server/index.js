@@ -99,6 +99,11 @@ createServer(async (req, res) => {
                 console.log(`Adding user ${userToRegister.username} to database...`);
                 connectAndRun(db => db.none("INSERT INTO users (username, password, realname, address, accountNumber, routingNumber, bankUsername, bankPassword) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", 
                 [userToRegister.username, userToRegister.password, userToRegister.realname, userToRegister.address, userToRegister.accountNumber, userToRegister.routingNumber, userToRegister.bankUsername, userToRegister.bankPassword]));
+
+                res.end(JSON.stringify({
+                    error: false,
+                    message: 'Registered user.'
+                }));
             }
         });
     /**
@@ -147,21 +152,27 @@ createServer(async (req, res) => {
         let body = '';
         req.on('data', data => body += data);
     
-        const options = JSON.parse(body);
+        req.on('end', () => {
+            const options = JSON.parse(body);
 
-        console.log(JSON.stringify(options))
+            console.log(JSON.stringify(options))
 
-        if(options.username === null || options.date === null || options.amount === null){
-            const message = `User not specified for add entry`;
-                console.error(message);
+            if(options.username === null || options.date === null || options.amount === null){
+                const message = `User not specified for add entry`;
+                    console.error(message);
+                    res.end(JSON.stringify({
+                        error: true,
+                        message: message
+                    }));
+            }
+            else{
+                connectAndRun(db => db.none("INSERT INTO history (username, date, amount, category, description) VALUES ($1, $2, $3, $4, $5);", [options.username, options.date, options.amount, options.category, options.description]));
+
                 res.end(JSON.stringify({
                     error: true,
-                    message: message
+                    message: 'Entry added.'
                 }));
-        }
-
-        req.on('end', () => {
-            connectAndRun(db => db.none("INSERT INTO history (username, date, amount, category, description) VALUES ($1, $2, $3, $4, $5);", [options.username, options.date, options.amount, options.category, options.description]));
+            }
         });
     } 
     else if (parsed.pathname === '/historyEntries') {
