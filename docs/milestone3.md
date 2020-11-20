@@ -1,6 +1,7 @@
 # Backend Implementation
 
 ## Database Implementation
+<pre>
 
 users  
 +---------------+----------+--------------------------------+  
@@ -25,6 +26,8 @@ history
 | category    | String   | what category of spending the transaction falls under |  
 | description | String   | description of what the transaction was               |  
 +-------------+----------+-------------------------------------------------------+  
+
+<pre>
   
 ## Breakdown of Division of Labor
 
