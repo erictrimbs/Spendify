@@ -11,6 +11,7 @@
 - Migrate backend from reading/writing to local file `database.json` to a PostgreSQL database
 - Enable Heroku releases to read/write to their own PostgreSQL databases linked to by environment variables
 - Add `pg-promise` dependency to `package.json`
+- Write database implementation in `milestone3.md`
 
 ### Ariel Simnegar
 
@@ -19,6 +20,7 @@
 - Create a bar chart showing each user's monthly spending for the past year
 - Enable Spendify suggestions to automatically update in response to transaction history changes
 - Use a `secrets.json` file to hide database username and password from GitHub
+- Write breakdown of division of labor in `milestone3.md`
 
 ### Eric Trimble
 
