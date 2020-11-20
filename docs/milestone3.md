@@ -50,6 +50,7 @@ history
 - Enable Spendify suggestions to automatically update in response to transaction history changes
 - Use a `secrets.json` file to hide database username and password from GitHub
 - Write breakdown of division of labor in `milestone3.md`
+- With Eric make user login secure by saving password salt and hashes instead of plaintext
 
 ### Eric Trimble
 
