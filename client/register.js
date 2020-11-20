@@ -57,9 +57,7 @@ window.addEventListener('load', async () => {
                 alert(feedback.message);
             } else {
                 console.log(feedback);
-                window.location.href = window.location.href.substring(
-                    0, window.location.href.lastIndexOf('/')
-                ) + '/dashboard.html';
+                window.location.href = '/dashboard.html';
             }
         }
     });
