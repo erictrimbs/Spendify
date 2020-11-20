@@ -103,8 +103,19 @@ createServer(async (req, res) => {
                 console.log(`Adding user ${userToRegister.username} to database...`);
                 const [salt, hash] = mc.hash(userToRegister.password);
                 console.log(salt, hash);
-                connectAndRun(db => db.none("INSERT INTO users (username, salt, hash, realname, address, accountNumber, routingNumber, bankUsername, bankPassword) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", 
-                [userToRegister.username, salt, hash, userToRegister.realname, userToRegister.address, userToRegister.accountNumber, userToRegister.routingNumber, userToRegister.bankUsername, userToRegister.bankPassword]));
+                connectAndRun(db => db.none(
+                    "INSERT INTO users (username, salt, hash, realname, address, accountNumber, routingNumber, bankUsername, bankPassword) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)", 
+                    [
+                        userToRegister.username,
+                        salt,
+                        hash,
+                        userToRegister.realname,
+                        userToRegister.address,
+                        userToRegister.accountNumber,
+                        userToRegister.routingNumber,
+                        userToRegister.bankUsername,
+                        userToRegister.bankPassword
+                    ]));
 
                 res.end(JSON.stringify({
                     error: false,
