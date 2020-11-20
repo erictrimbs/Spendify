@@ -18,14 +18,17 @@ users
 +---------------+----------+--------------------------------+  
   
 history  
-+-------------+----------+-------------------------------------------------------+  
-|   Column    | Datatype |                      Description                      |  
-+-------------+----------+-------------------------------------------------------+  
-| date        | String   | the date of transaction                               |  
-| amount      | integer  | the dollar amount of transaction                      |  
-| category    | String   | what category of spending the transaction falls under |  
-| description | String   | description of what the transaction was               |  
-+-------------+----------+-------------------------------------------------------+  
++-------------+----------+-------------------------------------------------------+
+|   Column    | Datatype |                      Description                      |
++-------------+----------+-------------------------------------------------------+
+| username    | String   | user's username                                       |
+| date        | String   | the date of transaction                               |
+| amount      | integer  | the dollar amount of transaction                      |
+| category    | String   | what category of spending the transaction falls under |
+| description | String   | description of what the transaction was               |
++-------------+----------+-------------------------------------------------------+
+
+
 
 </pre>
   
