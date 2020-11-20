@@ -27,7 +27,7 @@ history
 | description | String   | description of what the transaction was               |  
 +-------------+----------+-------------------------------------------------------+  
 
-<pre>
+</pre>
   
 ## Breakdown of Division of Labor
 
