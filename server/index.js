@@ -128,9 +128,9 @@ createServer(async (req, res) => {
         req.on('data', data => body += data);
         req.on('end', () => {
             const userToLogin = JSON.parse(body);
+            console.log(`Trying to login ${JSON.stringify(userToLogin)}...`);
             let userInDatabase = false;
             for (const user of database.users) {
-                console.log()
                 console.log(`Does ${userToLogin} match ${user}: ${mc.check(userToLogin.password, user.salt, user.hash)}`);
                 if (user.username === userToLogin.username &&
                     mc.check(userToLogin.password, user.salt, user.hash)) {
