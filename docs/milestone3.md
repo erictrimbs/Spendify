@@ -8,7 +8,8 @@ users
 |    Column     | Datatype |          Description           |  
 +---------------+----------+--------------------------------+  
 | username      | String   | the user username              |  
-| password      | String   | the user password              |   
+| salt          | String   | the user password salt         |
+| hash          | String   | the user password hash
 | realname      | String   | the user's real name           |  
 | address       | String   | the user's address             |  
 | accountNumber | integer  | the user's bank account number |  
