@@ -146,8 +146,12 @@ createServer(async (req, res) => {
     else if (parsed.pathname === '/addEntry') {
         let body = '';
         req.on('data', data => body += data);
+    
+        const options = JSON.parse(body);
 
-        if(data.username === null || data.date === null || data.amount === null){
+        console.log(JSON.stringify(options))
+
+        if(options.username === null || options.date === null || options.amount === null){
             const message = `User not specified for add entry`;
                 console.error(message);
                 res.end(JSON.stringify({
@@ -157,8 +161,7 @@ createServer(async (req, res) => {
         }
 
         req.on('end', () => {
-            const data = JSON.parse(body);
-            connectAndRun(db => db.none("INSERT INTO history (username, date, amount, category, description) VALUES ($1, $2, $3, $4, $5);", [data.username, data.date, data.amount, data.category, data.description]));
+            connectAndRun(db => db.none("INSERT INTO history (username, date, amount, category, description) VALUES ($1, $2, $3, $4, $5);", [options.username, options.date, options.amount, options.category, options.description]));
         });
     } 
     else if (parsed.pathname === '/historyEntries') {
@@ -166,6 +169,7 @@ createServer(async (req, res) => {
         req.on('data', data => body += data);
         req.on('end', () => {
             const options = JSON.parse(body);
+            console.log(JSON.stringify(options))
 
             const history = database.history.filter((item) => {
                 console.log('data.username in index.js: ' + options.username)
