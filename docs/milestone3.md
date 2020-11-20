@@ -2,7 +2,29 @@
 
 ## Database Implementation
 
-*Alfred, this area is for you!*
+users
++---------------+----------+--------------------------------+
+|    Column     | Datatype |          Description           |
++---------------+----------+--------------------------------+
+| username      | String   | the user username              |
+| password      | String   | the user password              |
+| realname      | String   | the user's real name           |
+| address       | String   | the user's address             |
+| accountNumber | integer  | the user's bank account number |
+| routingNumber | integer  | the user's bank routing number |
+| bankUsername  | String   | the user's bank username       |
+| bankPassword  | String   | the user's bank password       |
++---------------+----------+--------------------------------+
+
+history
++-------------+----------+-------------------------------------------------------+
+|   Column    | Datatype |                      Description                      |
++-------------+----------+-------------------------------------------------------+
+| date        | String   | the date of transaction                               |
+| amount      | integer  | the dollar amount of transaction                      |
+| category    | String   | what category of spending the transaction falls under |
+| description | String   | description of what the transaction was               |
++-------------+----------+-------------------------------------------------------+
 
 ## Breakdown of Division of Labor
 
