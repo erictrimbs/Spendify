@@ -5,6 +5,10 @@ import {writeFile, readFileSync, existsSync} from 'fs';
 
 import * as _pgp from "pg-promise";
 import { timeStamp } from 'console';
+import { MiniCrypt } from './miniCrypt.js';
+
+const mc = new MiniCrypt();
+
 const pgp = _pgp["default"] ({
     connect(client) {
         console.log('Connected to database:', client.connectionParameters.database);
@@ -44,8 +48,8 @@ async function connectAndRun(task) {
     }
 }
 
-let createTableUsers = "CREATE TABLE IF NOT EXISTS users (username VARCHAR, password VARCHAR , realname VARCHAR, address VARCHAR, accountNumber INT, routingNumber INT, bankUsername VARCHAR, bankPassword VARCHAR);";
-let createTableHistory = "CREATE TABLE IF NOT EXISTS history (username VARCHAR, date VARCHAR , amount INT, category VARCHAR, description VARCHAR);";
+let createTableUsers = "CREATE TABLE IF NOT EXISTS users (username VARCHAR, salt INT, hash INT, realname VARCHAR, address VARCHAR, accountNumber INT, routingNumber INT, bankUsername VARCHAR, bankPassword VARCHAR);";
+let createTableHistory = "CREATE TABLE IF NOT EXISTS history (username VARCHAR, date VARCHAR, amount INT, category VARCHAR, description VARCHAR);";
 let userTable = "SELECT * FROM users;";
 let historyTable = "SELECT * FROM history;";
 
@@ -97,8 +101,9 @@ createServer(async (req, res) => {
             if (!usernameInDatabase) {
                 // Add user to database
                 console.log(`Adding user ${userToRegister.username} to database...`);
-                connectAndRun(db => db.none("INSERT INTO users (username, password, realname, address, accountNumber, routingNumber, bankUsername, bankPassword) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", 
-                [userToRegister.username, userToRegister.password, userToRegister.realname, userToRegister.address, userToRegister.accountNumber, userToRegister.routingNumber, userToRegister.bankUsername, userToRegister.bankPassword]));
+                const [salt, hash] = mc.hash(userToRegister.password);
+                connectAndRun(db => db.none("INSERT INTO users (username, salt, hash, realname, address, accountNumber, routingNumber, bankUsername, bankPassword) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", 
+                [userToRegister.username, salt, hash, userToRegister.realname, userToRegister.address, userToRegister.accountNumber, userToRegister.routingNumber, userToRegister.bankUsername, userToRegister.bankPassword]));
 
                 res.end(JSON.stringify({
                     error: false,
@@ -125,7 +130,7 @@ createServer(async (req, res) => {
             let userInDatabase = false;
             for (const user of database.users) {
                 if (user.username === userToLogin.username &&
-                    user.password === userToLogin.password) {
+                    mc.check(userToLogin.password, user.salt, user.hash)) {
                     userInDatabase = true;
                     res.end(JSON.stringify({
                         error: false,

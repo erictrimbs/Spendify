@@ -65,7 +65,6 @@ window.addEventListener('load', async () => {
         if (loginFormEl.checkValidity()) {
             rememberMe();
             storage.setItem('register_spendify_username', usernameEl.value);
-            storage.setItem('register_spendify_password', passwordEl.value);
             window.location.href = 'register.html';
         }
     });
