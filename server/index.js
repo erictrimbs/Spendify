@@ -102,6 +102,7 @@ createServer(async (req, res) => {
                 // Add user to database
                 console.log(`Adding user ${userToRegister.username} to database...`);
                 const [salt, hash] = mc.hash(userToRegister.password);
+                console.log(salt, hash);
                 connectAndRun(db => db.none("INSERT INTO users (username, salt, hash, realname, address, accountNumber, routingNumber, bankUsername, bankPassword) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", 
                 [userToRegister.username, salt, hash, userToRegister.realname, userToRegister.address, userToRegister.accountNumber, userToRegister.routingNumber, userToRegister.bankUsername, userToRegister.bankPassword]));
 
@@ -129,6 +130,8 @@ createServer(async (req, res) => {
             const userToLogin = JSON.parse(body);
             let userInDatabase = false;
             for (const user of database.users) {
+                console.log()
+                console.log(`Does ${userToLogin} match ${user}: ${mc.check(userToLogin.password, user.salt, user.hash)}`);
                 if (user.username === userToLogin.username &&
                     mc.check(userToLogin.password, user.salt, user.hash)) {
                     userInDatabase = true;
