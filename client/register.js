@@ -59,6 +59,7 @@ window.addEventListener('load', async () => {
             if (feedback.error) {
                 alert(feedback.message);
             } else {
+                window.localStorage.setItem('spendify_username', usernameEl.value);
                 window.location.href = 'dashboard.html';
             }
         }

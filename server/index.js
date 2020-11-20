@@ -186,6 +186,7 @@ createServer(async (req, res) => {
                 console.log('options.username in index.js: ' + options.username)
                 console.log('item.username in index.js: ' + item.username)
                 if(options.username === item.username){
+                    
                     for (const key of Object.keys(options)) {
                         if (key in item && !String(item[key]).includes(String(options[key]))) {
                             return false;
