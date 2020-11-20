@@ -130,4 +130,5 @@ Alfred:
  - Take screenshots and write entries for transaction history API in `milestone2.md`
 
 Eric:
- - Write history filtering code in `server/index.js`
+ - Write get API endpoint for history in `server/index.js`
+ - Allow API users to filter history by date and category using URL params

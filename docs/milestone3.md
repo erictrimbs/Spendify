@@ -53,5 +53,6 @@ history
 
 ### Eric Trimble
 
-- Make user login secure by saving password salt and hashes instead of plaintext
-- Give each user their own transaction history instead of having all users see a shared transaction history
+- With Ariel make user login secure by saving password salt and hashes instead of plaintext
+- Silo user data so that users cannot interact with others' data including making the
+- Fix some bugs with history API endpoints associated with the above change
