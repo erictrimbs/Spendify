@@ -1,6 +1,6 @@
 async function entriesSync(options) {
     if (options === undefined) {
-      options = {};
+      options = {'username': window.localStorage.getItem('spendify_username')};
     }
     let t1 = await fetch('/historyEntries', {
         method: 'POST',

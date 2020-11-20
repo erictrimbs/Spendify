@@ -169,7 +169,7 @@ createServer(async (req, res) => {
                 connectAndRun(db => db.none("INSERT INTO history (username, date, amount, category, description) VALUES ($1, $2, $3, $4, $5);", [options.username, options.date, options.amount, options.category, options.description]));
 
                 res.end(JSON.stringify({
-                    error: true,
+                    error: false,
                     message: 'Entry added.'
                 }));
             }
@@ -183,7 +183,7 @@ createServer(async (req, res) => {
             console.log(JSON.stringify(options))
 
             const history = database.history.filter((item) => {
-                console.log('data.username in index.js: ' + options.username)
+                console.log('options.username in index.js: ' + options.username)
                 console.log('item.username in index.js: ' + item.username)
                 if(options.username === item.username){
                     for (const key of Object.keys(options)) {
