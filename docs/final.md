@@ -106,13 +106,13 @@ This command adds an entry to the user's transaction history in the database.
 
 **Example**:
 ```javascript
-await fetch("/addEntry", {
- method: 'POST',
- headers: {
-  "Content-Type": "application/json"
-  },
-  body: JSON.stringify({date:"10/25/20", amount: "22", category: "recreation", description: "Boda Borg"})
- });
+fetch("/addEntry", {
+    method: 'POST',
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({date:"10/25/20", amount: "22", category: "recreation", description: "Boda Borg"})
+});
 ```
 
 ##### Display and Filter Transaction History
