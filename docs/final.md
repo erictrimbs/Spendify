@@ -4,7 +4,7 @@
 
 ### Overview
 
-A brief overview of your application. This will be based on what you are submitting as your final web application artifact. You should also mention why your application is innovative.
+*A brief overview of your application. This will be based on what you are submitting as your final web application artifact. You should also mention why your application is innovative.*
 
 ### Team Members
  - Alfred Joseph ([josephalfred7](https://github.com/josephalfred7))
@@ -13,16 +13,158 @@ A brief overview of your application. This will be based on what you are submitt
 
 ### User Interface
 
-*A final up-to-date list/table describing your application’s user interface. This should include the name of the UI view and its purpose. You should include a screenshot of each of your UI views.*
+#### Registration
+
+Registers a new user for Spendify.
+
+![Register user image](../images/registerUser.png)
+
+#### Login
+
+Logs a user into Spendify.
+
+![Login user image](../images/loginUser.png)
+
+#### Adding and Filtering Transaction History Entries
+
+Enables users to view their transaction histories, filter them by amount, date, category, and description, and add new entries.
+
+![New history image](../images/historynew.png)
 
 ### APIs
 
-*A final up-to-date list/table describing your application’s API*
+#### Login API
 
+##### Register User
+```
+/registerUser
+```
+
+This command adds the given user's identifying information to the database:
+ - Username
+ - Password
+ - Real Name
+ - Address
+ - Bank Username
+ - Bank Password
+ - Account Number
+ - Routing Number
+
+If an entry with the given username already exists, the command does not add the information and returns an error object. Clicking the "Register" button in the Registration UI calls the `/registerUser` API.
+
+**Example**:
+```javascript
+fetch('/registerUser', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify({
+        realname: 'Emery Berger',
+        username: 'eberger',
+        password: 'i_heart_326',
+        bankUsername: 'eberger',
+        bankPassword: 'givem3money',
+        accountNumber: '0123456',
+        routingNumberEl: '01234567890',
+        address: '404 Naught Fd.',
+        city: 'UMassville',
+        state: 'MA',
+        zip: '01234'
+    })
+});
+```
+
+##### Login User
+```
+/loginUser
+```
+
+This command takes a username-password pair and returns the user's identifying information. If the username-password pair is not found in the database, the command returns an error object. Clicking the "Login" button in the Login UI calls the `/loginUser` API.
+
+**Example**:
+```javascript
+fetch('/loginUser', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify({
+        username: 'eberger',
+        password: 'i_heart_326'
+    })
+});
+```
+
+#### API for Transaction History Entries
+
+##### Add Entry to Transaction History
+```
+/addEntry
+```
+This command adds an entry to the user's transaction history in the database.
+
+**Example**:
+```javascript
+await fetch("/addEntry", {
+ method: 'POST',
+ headers: {
+  "Content-Type": "application/json"
+  },
+  body: JSON.stringify({date:"10/25/20", amount: "22", category: "recreation", description: "Boda Borg"})
+ });
+```
+
+##### Display and Filter Transaction History
+```
+/historyEntries
+```
+This command takes filters for transaction amounts, dates, categories, and descriptions and returns the subset of the user's transaction history that matches the given filters (or the entire history if no filters were requested).
+
+**Example**:
+```javascript
+fetch('/historyEntries', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify({date: '2020-05-10', category: 'Recreation'})
+});
+```
 
 ### Database
 
-*A final up-to-date representation of your database including a brief description of each of the entities in your data model and their relationships if any.*
+<pre>
+
+users  
++---------------+----------+--------------------------------+  
+|    Column     | Datatype |          Description           |  
++---------------+----------+--------------------------------+  
+| username      | String   | the user username              |  
+| salt          | String   | the user password salt         |
+| hash          | String   | the user password hash
+| realname      | String   | the user's real name           |  
+| address       | String   | the user's address             |  
+| accountNumber | integer  | the user's bank account number |  
+| routingNumber | integer  | the user's bank routing number |  
+| bankUsername  | String   | the user's bank username       |  
+| bankPassword  | String   | the user's bank password       |  
++---------------+----------+--------------------------------+  
+  
+history  
++-------------+----------+-------------------------------------------------------+
+|   Column    | Datatype |                      Description                      |
++-------------+----------+-------------------------------------------------------+
+| username    | String   | user's username                                       |
+| date        | String   | the date of transaction                               |
+| amount      | integer  | the dollar amount of transaction                      |
+| category    | String   | what category of spending the transaction falls under |
+| description | String   | description of what the transaction was               |
++-------------+----------+-------------------------------------------------------+
+
+
+
+</pre>
 
 ### URL Routes/Mappings
 
