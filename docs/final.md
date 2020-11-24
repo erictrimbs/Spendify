@@ -173,7 +173,7 @@ history
 
 ### Authentication/Authorization
 
-*A final up-to-date description of how users are authenticated and any permissions for specific users (if any) that you used in your application. You should mention how they relate to which UI views are accessible.*
+When a user registers a username and password, the password is converted to the salt and hash which are stored in the database. (The password itself is not stored.) When a user attempts to login with a username and password, the password checked with the salt and hash in the database to see if it matches. If the password checks out, the user is logged in and can access their dashboard and transaction history UIs.
 
 ### Division of Labor
 
