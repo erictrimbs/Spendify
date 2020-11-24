@@ -4,7 +4,7 @@
 
 ### Overview
 
-*A brief overview of your application. This will be based on what you are submitting as your final web application artifact. You should also mention why your application is innovative.*
+Spendify is an application that uses analytics of its users' transaction histories to provide detailed feedback on constructive spending habits and practices. Spendify is innovative because it allows users to edit their transaction histories at will, enabling users to record cash transactions that other financial applications cannot track.
 
 ### Team Members
  - Alfred Joseph ([josephalfred7](https://github.com/josephalfred7))
@@ -135,7 +135,6 @@ fetch('/historyEntries', {
 ### Database
 
 <pre>
-
 users  
 +---------------+----------+--------------------------------+  
 |    Column     | Datatype |          Description           |  
@@ -161,14 +160,16 @@ history
 | category    | String   | what category of spending the transaction falls under |
 | description | String   | description of what the transaction was               |
 +-------------+----------+-------------------------------------------------------+
-
-
-
 </pre>
 
 ### URL Routes/Mappings
 
-*A final up-to-date table of all the URL routes that your application supports and a short description of what those routes are used for. You should also indicate any authentication and permissions on those routes.*
+ - `/` Logs users in
+ - `/register.html` Registers users
+ - `/dashboard.html` Provides users feedback based on transaction history
+ - `/history.html` Provides transaction history adding and filtering
+ - `/income.html` Provides income analytics
+ - `/help.html` Explains the purpose of Spendify
 
 ### Authentication/Authorization
 
