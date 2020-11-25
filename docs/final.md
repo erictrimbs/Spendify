@@ -1,10 +1,10 @@
-# *Alfred, Ariel, Eric*
+# Software Stonks
 
 ## Spendify
 
 ### Overview
 
-*A brief overview of your application. This will be based on what you are submitting as your final web application artifact. You should also mention why your application is innovative.*
+Spendify is an application that uses analytics of its users' transaction histories to provide detailed feedback on constructive spending habits and practices. Spendify is innovative because it allows users to edit their transaction histories at will, enabling users to record cash transactions that other financial applications cannot track.
 
 ### Team Members
  - Alfred Joseph ([josephalfred7](https://github.com/josephalfred7))
@@ -135,7 +135,6 @@ fetch('/historyEntries', {
 ### Database
 
 <pre>
-
 users  
 +---------------+----------+--------------------------------+  
 |    Column     | Datatype |          Description           |  
@@ -161,18 +160,20 @@ history
 | category    | String   | what category of spending the transaction falls under |
 | description | String   | description of what the transaction was               |
 +-------------+----------+-------------------------------------------------------+
-
-
-
 </pre>
 
 ### URL Routes/Mappings
 
-*A final up-to-date table of all the URL routes that your application supports and a short description of what those routes are used for. You should also indicate any authentication and permissions on those routes.*
+ - `/` Logs users in
+ - `/register.html` Registers users
+ - `/dashboard.html` Provides users feedback based on transaction history
+ - `/history.html` Provides transaction history adding and filtering
+ - `/income.html` Provides income analytics
+ - `/help.html` Explains the purpose of Spendify
 
 ### Authentication/Authorization
 
-*A final up-to-date description of how users are authenticated and any permissions for specific users (if any) that you used in your application. You should mention how they relate to which UI views are accessible.*
+When a user registers a username and password, the password is converted to the salt and hash which are stored in the database. (The password itself is not stored.) When a user attempts to login with a username and password, the password checked with the salt and hash in the database to see if it matches. If the password checks out, the user is logged in and can access their dashboard and transaction history UIs.
 
 ### Division of Labor
 
@@ -217,6 +218,6 @@ history
 
 ### Conclusion
 
-*A conclusion describing your team’s experience in working on this project. This should include what you learned through the design and implementation process, the difficulties you encountered, what your team would have liked to know before starting the project that would have helped you later, and any other technical hurdles that your team encountered.*
+Through our design of Spendify, we learned how to create vibrant webpages with Bootstrap, define requirements with Node, create sophisticated databases with MongoDB and PostgreSQL, allow secure logins with MiniCrypt, draw informative data graphics with HTML Canvas, create HTTP servers with express.js, and much more. We encountered many difficulties between debugging the JavaScript we wrote for our frontend and backend, ensuring our database retained the information we needed, and getting our HTTP servers running, but we worked together to complete Spendify in spite of those setbacks. Having a more in-depth knowledge of HTML, CSS, SQL, and JavaScript would have significantly improved our pace and minimized our debugging time. Despite our difficulties, we're proud to have made Spendify a reality.
 
 [Link to hosted application!](https://guarded-cliffs-22166.herokuapp.com/)
