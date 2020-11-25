@@ -2,7 +2,7 @@ async function entriesSync(options) {
     if (options === undefined) {
       options = {'username': window.localStorage.getItem('spendify_username')};
     }
-    let t1 = await fetch('/historyEntries', {
+    const t1 = await fetch('/historyEntries', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -10,16 +10,16 @@ async function entriesSync(options) {
         body: JSON.stringify(options)
     });
     if (!t1.ok) {
-        console.log(response.error);
+        console.log(t1.error);
         return;
     }
-    let fp1 = await t1.json();
+    const fp1 = await t1.json();
     render_history_table(document.getElementById("historytable"), fp1);
 }
 entriesSync();
 
 document.getElementById('addbutton').addEventListener('click', async () => {
-            let obj = {};
+            const obj = {};
             obj.username = window.localStorage.getItem('spendify_username');
             obj.date = document.getElementById("dateadd").value;
             obj.amount = document.getElementById("amountadd").value;
@@ -54,29 +54,29 @@ function render_history_table(element, arr) {
     element.innerHTML = '';
 
     // creates a <table> element and a <tbody> element
-    let tbl = document.createElement("table");
-    let tblHead = document.createElement("thead");
+    const tbl = document.createElement("table");
+    const tblHead = document.createElement("thead");
 
     for (let i = 0; i < 1; i++) {
         // creates a table row
-        let row = document.createElement("tr");
+        const row = document.createElement("tr");
     
         for (let j = 0; j < 4; j++) {
           // Create a <td> element and a text node, make the text
           // node the contents of the <td>, and put the <td> at
           // the end of the table row
-          let cell = document.createElement("th");
+          const cell = document.createElement("th");
           let cellText;
-          if(j == 0) {
+          if(j === 0) {
               cellText = document.createTextNode("----------Date----------");
           }
-          if(j == 1) {
+          if(j === 1) {
               cellText = document.createTextNode("----------Amount----------");
           }
-          if(j == 2) {
+          if(j === 2) {
               cellText = document.createTextNode("----------Category----------");
           }
-          if(j == 3) {
+          if(j === 3) {
               cellText = document.createTextNode("----------Description----------");
           }
           cell.appendChild(cellText);
@@ -87,29 +87,29 @@ function render_history_table(element, arr) {
         tblHead.appendChild(row);
       }
 
-    let tblBody = document.createElement("tbody");
+    const tblBody = document.createElement("tbody");
   
     // creating all cells
     for (let i = 0; i < arr.length; i++) {
       // creates a table row
-      let row = document.createElement("tr");
+      const row = document.createElement("tr");
   
       for (let j = 0; j < 4; j++) {
         // Create a <td> element and a text node, make the text
         // node the contents of the <td>, and put the <td> at
         // the end of the table row
-        let cell = document.createElement("td");
+        const cell = document.createElement("td");
         let cellText;
-        if(j == 0) {
+        if(j === 0) {
             cellText = document.createTextNode(arr[i].date);
         }
-        if(j == 1) {
+        if(j === 1) {
             cellText = document.createTextNode("$" + arr[i].amount);
         }
-        if(j == 2) {
+        if(j === 2) {
             cellText = document.createTextNode(arr[i].category);
         }
-        if(j == 3) {
+        if(j === 3) {
             cellText = document.createTextNode(arr[i].description);
         }
         cell.appendChild(cellText);

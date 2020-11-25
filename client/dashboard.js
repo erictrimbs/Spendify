@@ -2,7 +2,6 @@
 function updateDonutChart(history) {
     // Donut chart related constants and objects
     const canvasEl = document.getElementById('donut-chart');
-    const legendEl = document.getElementById('donut-legend');
     const canvasWidth = canvasEl.width;
     const canvasHeight = canvasEl.height;
     const donutXY = Math.min(canvasWidth / 2, canvasHeight / 2);
@@ -21,7 +20,7 @@ function updateDonutChart(history) {
     const categoryAmounts = {};
     let totalAmount = 0;
     for (const entry of history) {
-        let amount = +entry.amount; // Coerce amount string to number
+        const amount = +entry.amount; // Coerce amount string to number
         if (amount !== amount) {
             continue; // Don't add malformed (NaN) amounts
         }
@@ -36,6 +35,7 @@ function updateDonutChart(history) {
         }
     }
     const categoriesAmounts = Object.entries(categoryAmounts);
+    // eslint-disable-next-line no-unused-vars
     categoriesAmounts.sort(([_1, a1], [_2, a2]) => a2 - a1);
     // Create "Other" slice if too many slices
     if (categoriesAmounts.length > sliceColors.length) {
@@ -109,7 +109,6 @@ function updateSpendingGraph(history) {
     const backgroundColor = 'white';
     const barColor = 'blue';
     const textColor = 'black';
-    const textFont = '10px Arial';
     const headingFont = '20px Arial';
     const mos = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
@@ -133,15 +132,15 @@ function updateSpendingGraph(history) {
         }
     }
     const monthEntries = Object.entries(months);
+    // eslint-disable-next-line no-unused-vars
     monthEntries.sort(([ym1, a1], [ym2, a2]) => ym1 < ym2);
-    let greatestAmount = monthEntries.reduce((acc, elt) => Math.max(acc, elt[1]), 0);
+    const greatestAmount = monthEntries.reduce((acc, elt) => Math.max(acc, elt[1]), 0);
     // Set background color
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
     // Create spending graph
     ctx.textBaseline = 'top';
     ctx.textAlign = 'center';
-    const monthDiff = monthEntries.length * canvasWidth * (1 - margin * 2);
     let x = canvasWidth * margin;
     for (let i = 0; i < monthEntries.length; i++) {
         let barHeight = monthEntries[i][1] / greatestAmount * canvasHeight * 0.6;
@@ -193,12 +192,12 @@ function updateSuggestions(history) {
     if (currentMonthlySpending < averageMonthlySpending) {
         monthlySpendingEl.textContent += 'Keep it up!';
     } else {
-        monthlySpendingEl.textContent += 'Try reducing it!'
+        monthlySpendingEl.textContent += 'Try reducing it!';
     }
     // Suggestion to lower top category spending
     const categoryAmounts = {};
     for (const entry of history) {
-        let amount = +entry.amount; // Coerce amount string to number
+        const amount = +entry.amount; // Coerce amount string to number
         if (amount !== amount) {
             continue; // Don't add malformed (NaN) amounts
         }

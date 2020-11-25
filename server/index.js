@@ -1,10 +1,9 @@
 import {createServer} from 'http';
 import {parse} from 'url';
 import {join} from 'path';
-import {writeFile, readFileSync, existsSync} from 'fs';
+import {readFileSync, existsSync} from 'fs';
 
 import * as _pgp from "pg-promise";
-import { timeStamp } from 'console';
 import { MiniCrypt } from './miniCrypt.js';
 
 const mc = new MiniCrypt();
@@ -19,14 +18,14 @@ const pgp = _pgp["default"] ({
     }
 });
 
-let secrets, username, password;
+let secrets, password;
 if (!process.env.PASSWORD) {
     secrets = JSON.parse(readFileSync('secrets.json'));
     password = secrets.password;
 } else {
     password = process.env.PASSWORD;
 }
-username = process.env.NAME || secrets.username;
+const username = process.env.NAME || secrets.username;
 
 const url = process.env.DATABASE_URL || `postgres://${username}:${password}@localhost/`;
 const db = pgp(url);
@@ -37,27 +36,25 @@ async function connectAndRun(task) {
     try {
         connection = await db.connect();
         return await task(connection);
-    } catch (e) {
-        throw e;
     } finally {
         try {
             connection.done();
-        } catch(ignored) {
-
+        } catch (ignored) {
+            // Who cares?
         }
     }
 }
 
-let createTableUsers = "CREATE TABLE IF NOT EXISTS users (username VARCHAR, salt VARCHAR, hash VARCHAR, realname VARCHAR, address VARCHAR, accountNumber INT, routingNumber INT, bankUsername VARCHAR, bankPassword VARCHAR);";
-let createTableHistory = "CREATE TABLE IF NOT EXISTS history (username VARCHAR, date VARCHAR, amount INT, category VARCHAR, description VARCHAR);";
-let userTable = "SELECT * FROM users;";
-let historyTable = "SELECT * FROM history;";
+const createTableUsers = "CREATE TABLE IF NOT EXISTS users (username VARCHAR, salt VARCHAR, hash VARCHAR, realname VARCHAR, address VARCHAR, accountNumber INT, routingNumber INT, bankUsername VARCHAR, bankPassword VARCHAR);";
+const createTableHistory = "CREATE TABLE IF NOT EXISTS history (username VARCHAR, date VARCHAR, amount INT, category VARCHAR, description VARCHAR);";
+const userTable = "SELECT * FROM users;";
+const historyTable = "SELECT * FROM history;";
 
 createServer(async (req, res) => {
     const parsed = parse(req.url, true);
     await connectAndRun(db => db.none(createTableUsers));
     await connectAndRun(db => db.none(createTableHistory));
-    let database = {
+    const database = {
         users: [],
         history: []
 
@@ -174,7 +171,7 @@ createServer(async (req, res) => {
         req.on('end', () => {
             const options = JSON.parse(body);
 
-            console.log(JSON.stringify(options))
+            console.log(JSON.stringify(options));
 
             if(options.username === null || options.date === null || options.amount === null){
                 const message = `User not specified for add entry`;
@@ -199,12 +196,12 @@ createServer(async (req, res) => {
         req.on('data', data => body += data);
         req.on('end', () => {
             const options = JSON.parse(body);
-            console.log(JSON.stringify(options))
+            console.log(JSON.stringify(options));
 
             const history = database.history.filter((item) => {
-                console.log('options.username in index.js: ' + options.username)
-                console.log('item.username in index.js: ' + item.username)
-                if(options.username === item.username){
+                console.log('options.username in index.js: ' + options.username);
+                console.log('item.username in index.js: ' + item.username);
+                if (options.username === item.username) {
                     
                     for (const key of Object.keys(options)) {
                         if (key in item && !String(item[key]).includes(String(options[key]))) {
