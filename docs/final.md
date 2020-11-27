@@ -185,6 +185,7 @@ When a user registers a username and password, the password is converted to the 
  - Migrated backend from reading/writing to local file `database.json` to a PostgreSQL database
  - Enabled Heroku releases to read/write to their own PostgreSQL databases linked to by environment variables
  - Added `pg-promise` dependency to `package.json`
+ - Secured user login by saving password salt and hashes instead of plaintext with Ariel and Eric
  - Wrote database implementation in `milestone3.md`
  
 #### Ariel Simnegar
@@ -204,7 +205,7 @@ When a user registers a username and password, the password is converted to the 
  - Enabled Spendify suggestions to automatically update in response to transaction history changes
  - Used a `secrets.json` file to hide database username and password from GitHub
  - Wrote breakdown of division of labor in `milestone3.md`
- - Secured user login by saving password salt and hashes instead of plaintext with Eric
+ - Secured user login by saving password salt and hashes instead of plaintext with Alfred and Eric
  - Created and began writing `final.md`
 
 #### Eric Trimble
@@ -212,7 +213,7 @@ When a user registers a username and password, the password is converted to the 
  - Wrote `ideas.md` and contributed to `milestone1.md`
  - Write get API endpoint for history in `server/index.js`
  - Enabled users to filter transactions by amount, date, category, and description
- - Secured user login by saving password salt and hashes instead of plaintext with Ariel
+ - Secured user login by saving password salt and hashes instead of plaintext with Alfred and Ariel
  - Prevented users from viewing each other's transaction histories
  - Debugged transaction history API endpoint errors associated with the above change
 
