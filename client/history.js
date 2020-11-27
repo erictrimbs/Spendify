@@ -38,7 +38,9 @@ document.getElementById('addbutton').addEventListener('click', async () => {
 });
 
 document.getElementById('filterbutton').addEventListener('click', () => {
-  const options = {};
+  const options = {
+    'username': window.localStorage.getItem('spendify_username')
+  };
   const filterValues = ['date', 'amount', 'category', 'description'];
   for (const filterValue of filterValues) {
     const value = document.getElementById(`${filterValue}filter`).value;
