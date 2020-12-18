@@ -1,3 +1,5 @@
+# Software Stonks
+
 ## Spendify
 
 ### Overview
@@ -15,19 +17,19 @@ Spendify is an application that uses analytics of its users' transaction histori
 
 Registers a new user for Spendify.
 
-![Register user image](../images/registerUser.png)
+![Register user image](./images/registerUser.png)
 
 #### Login
 
 Logs a user into Spendify.
 
-![Login user image](../images/loginUser.png)
+![Login user image](./images/loginUser.png)
 
 #### Adding and Filtering Transaction History Entries
 
 Enables users to view their transaction histories, filter them by amount, date, category, and description, and add new entries.
 
-![New history image](../images/historynew.png)
+![New history image](./images/historynew.png)
 
 ### APIs
 
