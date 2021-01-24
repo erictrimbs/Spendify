@@ -1,41 +1,39 @@
-# Software Stonks
+# Spendify
 
-## Spendify
-
-### Overview
+## Overview
 
 Spendify is an application that uses analytics of its users' transaction histories to provide detailed feedback on constructive spending habits and practices. Spendify is innovative because it allows users to edit their transaction histories at will, enabling users to record cash transactions that other financial applications cannot track.
 
-### Team Members
+## Team Members
  - Alfred Joseph ([josephalfred7](https://github.com/josephalfred7))
  - Ariel Simnegar ([ariel-simnegar](https://github.com/ariel-simnegar))
- - Eric Trimble ([ETrimbs](https://github.com/ETrimbs))
+ - Eric Trimble ([ETrimbs](https://github.com/erictrimbs))
 
-### User Interface
+## User Interface
 
-#### Registration
+### Registration
 
 Registers a new user for Spendify.
 
 ![Register user image](./images/registerUser.png)
 
-#### Login
+### Login
 
 Logs a user into Spendify.
 
 ![Login user image](./images/loginUser.png)
 
-#### Adding and Filtering Transaction History Entries
+### Adding and Filtering Transaction History Entries
 
 Enables users to view their transaction histories, filter them by amount, date, category, and description, and add new entries.
 
 ![New history image](./images/historynew.png)
 
-### APIs
+## APIs
 
-#### Login API
+### Login API
 
-##### Register User
+#### Register User
 ```
 /registerUser
 ```
@@ -75,7 +73,7 @@ fetch('/registerUser', {
 });
 ```
 
-##### Login User
+#### Login User
 ```
 /loginUser
 ```
@@ -96,9 +94,9 @@ fetch('/loginUser', {
 });
 ```
 
-#### API for Transaction History Entries
+### API for Transaction History Entries
 
-##### Add Entry to Transaction History
+#### Add Entry to Transaction History
 ```
 /addEntry
 ```
@@ -115,7 +113,7 @@ fetch("/addEntry", {
 });
 ```
 
-##### Display and Filter Transaction History
+#### Display and Filter Transaction History
 ```
 /historyEntries
 ```
@@ -132,7 +130,7 @@ fetch('/historyEntries', {
 });
 ```
 
-### Database
+## Database
 
 <pre>
 users  
@@ -162,7 +160,7 @@ history
 +-------------+----------+-------------------------------------------------------+
 </pre>
 
-### URL Routes/Mappings
+## URL Routes/Mappings
 
  - `/` Logs users in
  - `/register.html` Registers users
@@ -171,13 +169,13 @@ history
  - `/income.html` Provides income analytics
  - `/help.html` Explains the purpose of Spendify
 
-### Authentication/Authorization
+## Authentication/Authorization
 
 When a user registers a username and password, the password is converted to the salt and hash which are stored in the database. (The password itself is not stored.) When a user attempts to login with a username and password, the password checked with the salt and hash in the database to see if it matches. If the password checks out, the user is logged in and can access their dashboard and transaction history UIs.
 
-### Division of Labor
+## Division of Labor
 
-#### Alfred Joseph
+### Alfred Joseph
  - Worked with Ariel to create all wireframes other than income
  - Wrote the starting code for `login.html`, `register.html`, and `help.html`
  - Created API to read and write to transaction history and integrated API with frontend
@@ -188,7 +186,7 @@ When a user registers a username and password, the password is converted to the 
  - Secured user login by saving password salt and hashes instead of plaintext with Ariel and Eric
  - Wrote database implementation in `milestone3.md`
  
-#### Ariel Simnegar
+### Ariel Simnegar
  - Worked with Alfred to create all wireframes other than income
  - Wrote the starting code for `dashboard.html` and `history.html`
  - Have `server/index.js` run HTTP server
@@ -208,7 +206,7 @@ When a user registers a username and password, the password is converted to the 
  - Secured user login by saving password salt and hashes instead of plaintext with Alfred and Eric
  - Created and began writing `final.md`
 
-#### Eric Trimble
+### Eric Trimble
  - Created the income wireframe and `income.html`
  - Wrote `ideas.md` and contributed to `milestone1.md`
  - Write get API endpoint for history in `server/index.js`
@@ -217,8 +215,9 @@ When a user registers a username and password, the password is converted to the 
  - Prevented users from viewing each other's transaction histories
  - Debugged transaction history API endpoint errors associated with the above change
 
-### Conclusion
+## Conclusion
 
 Through our design of Spendify, we learned how to create vibrant webpages with Bootstrap, define requirements with Node, create sophisticated databases with MongoDB and PostgreSQL, allow secure logins with MiniCrypt, draw informative data graphics with HTML Canvas, create HTTP servers with express.js, and much more. We encountered many difficulties between debugging the JavaScript we wrote for our frontend and backend, ensuring our database retained the information we needed, and getting our HTTP servers running, but we worked together to complete Spendify in spite of those setbacks. Having a more in-depth knowledge of HTML, CSS, SQL, and JavaScript would have significantly improved our pace and minimized our debugging time. Despite our difficulties, we're proud to have made Spendify a reality.
 
 [Link to hosted application!](https://guarded-cliffs-22166.herokuapp.com/)
+Login info! Username: Test123 Password: Test123
