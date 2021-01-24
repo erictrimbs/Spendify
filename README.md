@@ -219,5 +219,6 @@ When a user registers a username and password, the password is converted to the 
 
 Through our design of Spendify, we learned how to create vibrant webpages with Bootstrap, define requirements with Node, create sophisticated databases with MongoDB and PostgreSQL, allow secure logins with MiniCrypt, draw informative data graphics with HTML Canvas, create HTTP servers with express.js, and much more. We encountered many difficulties between debugging the JavaScript we wrote for our frontend and backend, ensuring our database retained the information we needed, and getting our HTTP servers running, but we worked together to complete Spendify in spite of those setbacks. Having a more in-depth knowledge of HTML, CSS, SQL, and JavaScript would have significantly improved our pace and minimized our debugging time. Despite our difficulties, we're proud to have made Spendify a reality.
 
-[Link to hosted application!](https://guarded-cliffs-22166.herokuapp.com/)
+[Link to hosted application](https://guarded-cliffs-22166.herokuapp.com/)
+
 Login info! Username: Test123 Password: Test123
