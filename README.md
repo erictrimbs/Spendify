@@ -4,6 +4,10 @@
 
 Spendify is an application that uses analytics of its users' transaction histories to provide detailed feedback on constructive spending habits and practices. Spendify is innovative because it allows users to edit their transaction histories at will, enabling users to record cash transactions that other financial applications cannot track.
 
+[Link to hosted application](https://guarded-cliffs-22166.herokuapp.com/)
+
+Login info! Username: Test123 Password: Test123
+
 ## Team Members
  - Alfred Joseph ([josephalfred7](https://github.com/josephalfred7))
  - Ariel Simnegar ([ariel-simnegar](https://github.com/ariel-simnegar))
@@ -218,7 +222,3 @@ When a user registers a username and password, the password is converted to the 
 ## Conclusion
 
 Through our design of Spendify, we learned how to create vibrant webpages with Bootstrap, define requirements with Node, create sophisticated databases with MongoDB and PostgreSQL, allow secure logins with MiniCrypt, draw informative data graphics with HTML Canvas, create HTTP servers with express.js, and much more. We encountered many difficulties between debugging the JavaScript we wrote for our frontend and backend, ensuring our database retained the information we needed, and getting our HTTP servers running, but we worked together to complete Spendify in spite of those setbacks. Having a more in-depth knowledge of HTML, CSS, SQL, and JavaScript would have significantly improved our pace and minimized our debugging time. Despite our difficulties, we're proud to have made Spendify a reality.
-
-[Link to hosted application](https://guarded-cliffs-22166.herokuapp.com/)
-
-Login info! Username: Test123 Password: Test123
