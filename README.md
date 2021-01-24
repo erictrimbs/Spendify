@@ -15,6 +15,11 @@ Login info! Username: Test123 Password: Test123
 
 ## User Interface
 
+### Spending Data
+
+![Spending data image](./images/spendingData.png)
+
+
 ### Registration
 
 Registers a new user for Spendify.
